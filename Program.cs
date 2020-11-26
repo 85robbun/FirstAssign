@@ -1,37 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 
-namespace KalkUpp
+namespace inLamNing
 {
     internal class Program
     {
         private static void Main(string[] args)
 
         {
-            bool active = true;
+            bool playagain = true;
+            List<double> arrayList = new List<double>();
             do
             {
-                Console.WriteLine("CalcArray");
+                Console.Clear();
+
+                Console.WriteLine(@"
+'##::::'##:'##::: ##::'#######::'########::'########:'##::::'##::'#######::'########:::'#######::'##::::'##:
+ ##:::: ##: ###:: ##:'##.... ##: ##.... ##:... ##..:: ##:::: ##:'##.... ##: ##.... ##:'##.... ##:. ##::'##::
+ ##:::: ##: ####: ##: ##:::: ##: ##:::: ##:::: ##:::: ##:::: ##: ##:::: ##: ##:::: ##: ##:::: ##::. ##'##:::
+ ##:::: ##: ## ## ##: ##:::: ##: ########::::: ##:::: #########: ##:::: ##: ##:::: ##: ##:::: ##:::. ###::::
+ ##:::: ##: ##. ####: ##:::: ##: ##.. ##:::::: ##:::: ##.... ##: ##:::: ##: ##:::: ##: ##:::: ##::: ## ##:::
+ ##:::: ##: ##:. ###: ##:::: ##: ##::. ##::::: ##:::: ##:::: ##: ##:::: ##: ##:::: ##: ##:::: ##:: ##:. ##::
+. #######:: ##::. ##:. #######:: ##:::. ##:::: ##:::: ##:::: ##:. #######:: ########::. #######:: ##:::. ##:
+:.......:::..::::..:::.......:::..:::::..:::::..:::::..:::::..:::.......:::........::::.......:::..:::::..::
+:'######:::::'###::::'##::::::::'######::'##::::'##:'##::::::::::'###::::'########::'#######::'########::
+'##... ##:::'## ##::: ##:::::::'##... ##: ##:::: ##: ##:::::::::'## ##:::... ##..::'##.... ##: ##.... ##:
+ ##:::..:::'##:. ##:: ##::::::: ##:::..:: ##:::: ##: ##::::::::'##:. ##::::: ##:::: ##:::: ##: ##:::: ##:
+ ##:::::::'##:::. ##: ##::::::: ##::::::: ##:::: ##: ##:::::::'##:::. ##:::: ##:::: ##:::: ##: ########::
+ ##::::::: #########: ##::::::: ##::::::: ##:::: ##: ##::::::: #########:::: ##:::: ##:::: ##: ##.. ##:::
+ ##::: ##: ##.... ##: ##::::::: ##::: ##: ##:::: ##: ##::::::: ##.... ##:::: ##:::: ##:::: ##: ##::. ##::
+. ######:: ##:::: ##: ########:. ######::. #######:: ########: ##:::: ##:::: ##::::. #######:: ##:::. ##:
+ ");
+
+                Console.WriteLine("Welcome");
+
                 var numArray = new int[3];
                 var opArray = new[] { '+', '-', '*', '/' };
 
-                //Begränsade beräkningarna till 3 input pga Uppgiftens krav.
-                //Det hade varit "cleanare" att låta användaren matta in siffor
                 for (int i = 0; i < 1; i++)
                 {
-                    Console.Write("Enter the firstNumber ");
+                    Console.Write("Please enter the first number ");
                     numArray[0] = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Enter the SecondNumber ");
+                    Console.Write("Please enter the second number ");
                     numArray[1] = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Enter the ThirdNumber ");
+                    Console.Write("Please enter the third number ");
                     numArray[2] = Convert.ToInt32(Console.ReadLine());
                 }
 
                 for (int i = 0; i < 1; i++)
                 {
-                    Console.WriteLine("Please Enter First operator");
+                    Console.Write("Please Enter First operator");
                     opArray[0] = Char.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Please Enter Second operator");
+                    Console.Write("Please Enter Second operator");
                     opArray[1] = Char.Parse(Console.ReadLine());
                 }
 
@@ -70,35 +92,59 @@ namespace KalkUpp
                     }
                     x++;
                 }
-                Console.WriteLine("Result: {0}", result);
-                Console.WriteLine("\nType 'Exit' to leave :( Or try another calculation :)\n");
+                //Printing  result "unorthodox" solution
+                string print;
+
+                print = (numbers[0].ToString() + operations[0].ToString() + numbers[1].ToString() + operations[1].ToString() + numbers[2].ToString());
+                Console.WriteLine(" result : " + print + " = " + result);
+
+                //Storing the value to list , task requirement
+                arrayList.Add((double)result);
+
                 if (result < 100)
                 {
-                    Console.WriteLine("Less than a hundred");
+                    Console.WriteLine("  < Thats less than a hundred");
                 }
                 else if (result > 100)
                 {
-                    Console.WriteLine("More than a hundred");
+                    Console.WriteLine("   >Thats more than a hundred");
                 }
                 else
                 {
                     Console.WriteLine("Cool, you now have a hundred, clap clap");
                 }
 
+                //Getting the stored value from the list and assigning new "sum"
+                double sum = 0;
+                foreach (var value in arrayList)
                 {
-                    Console.Write("Do you want to play again [Y/N]?");
-                    string answer = Console.ReadLine().ToUpper();
-                    if (answer == "Y")
-                        break; // Exit the inner while-loop and continue in the outer while loop.
-                    if (answer == "N")
-                        return; // Exit the Main-method.
+                    sum += value; // Prints items
                 }
 
-                Console.WriteLine("Result: {0}", result);
-                Console.WriteLine("\nType 'Exit' to leave :( Or try another calculation :)\n");
-            } while (active == true);
-
-
+                Console.WriteLine("Press Y or enter to play again, or press N to exit !");
+                var answer = Console.ReadLine().ToUpper();
+                if (answer == "Y")
+                {
+                    playagain = true;
+                }
+                else if (answer == "N")
+                {
+                    Console.WriteLine("Thank you for playing. The sum of all is = " + sum);
+                    Console.Write("Calculator exiting in:  ");
+                    Console.Write("3........");
+                    Thread.Sleep(1000);
+                    Console.Write("2........");
+                    Thread.Sleep(1000);
+                    Console.Write("1........");
+                    Thread.Sleep(1000);
+                    Console.Write("PeaceOut");
+                    Console.WriteLine(@"
+ | |__ _  _ ___
+ | '_ \ || / -_)
+ |_.__/\_, \___");
+                    playagain = false;
+                }
+            } while (playagain == true);
         }
     }
 }
