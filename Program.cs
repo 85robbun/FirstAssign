@@ -11,11 +11,10 @@ namespace inLamNing
         {
             bool playagain = true;
             List<double> arrayList = new List<double>();
-            
+
             do
             {
                 Console.Clear();
-
                 Console.WriteLine(@"
 '##::::'##:'##::: ##::'#######::'########::'########:'##::::'##::'#######::'########:::'#######::'##::::'##:
  ##:::: ##: ###:: ##:'##.... ##: ##.... ##:... ##..:: ##:::: ##:'##.... ##: ##.... ##:'##.... ##:. ##::'##::
@@ -103,11 +102,11 @@ namespace inLamNing
 
                 if (result < 100)
                 {
-                    Console.WriteLine("  < Thats less than a hundred");
+                    Console.WriteLine("<Thats less than a hundred");
                 }
                 else if (result > 100)
                 {
-                    Console.WriteLine("   >Thats more than a hundred");
+                    Console.WriteLine(">Thats more than a hundred");
                 }
                 else
                 {
@@ -115,8 +114,7 @@ namespace inLamNing
                 }
 
                 //play again or extit promt
-
-                Console.WriteLine("Press Y or enter to play again, or press N to exit !");
+                Console.WriteLine("Play again, Y or N ");
                 var press = Console.ReadKey();
 
                 if (press.Key == ConsoleKey.Y)
@@ -136,36 +134,30 @@ namespace inLamNing
                     Thread.Sleep(1000);
                     Console.Write("1........");
                     Thread.Sleep(1000);
-                    Console.Write("PeaceOut");
+
                     playagain = true;
                 }
-                else  if (press.Key == ConsoleKey.N)
+                else if (press.Key == ConsoleKey.N)
                 {
-             
-                  
                     playagain = false;
                 }
             } while (playagain == true);
+
             double sum = 0;
+
             foreach (var value in arrayList)
             {
-                sum += value; // Prints value
+                sum += value; // Adde stored value
             }
-
-            Console.WriteLine("Thank you for playing. The sum of all i = " + sum );
-            Console.Write("Calculator exiting in:  ");
-            Console.Write("3........");
-            Thread.Sleep(1000);
-            Console.Write("2........");
-            Thread.Sleep(1000);
-            Console.Write("1........");
-            Thread.Sleep(1000);
-            Console.WriteLine(@"
+            
+            Console.Clear();
+            Console.WriteLine("Your  totall is = " + sum);
+            Console.WriteLine (@"
                    ╔══╗
                    ╚╗╔╝
                    ╔╝(¯`v´¯)
-                   ╚══`.¸.[C#] BYEEEE]
-                          [ThankYouForPlaying] 
+                   ╚══`.¸.[C#]
+                          [ThankYouForPlaying]
                          __________
                         | ________ |
                         ||12345678||
@@ -176,8 +168,16 @@ namespace inLamNing
                         |[1|2|3][%]|
                         |[.|O|:][=]|
                         \__________/ ");
-            Console.WriteLine("Pres Y To Exit the Console");
+            Console.WriteLine("Press enter To Exit");
             Console.ReadLine();
+            Console.Write("Calculator exiting in:  ");
+            Console.Write("3........");
+            Thread.Sleep(1000);
+            Console.Write("2........");
+            Thread.Sleep(1000);
+            Console.Write("1........");
+            Thread.Sleep(1000);
+            Console.Write("PeaceOut"); 
         }
     }
 }
