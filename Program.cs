@@ -11,6 +11,7 @@ namespace inLamNing
         {
             bool playagain = true;
             List<double> arrayList = new List<double>();
+            
             do
             {
                 Console.Clear();
@@ -40,21 +41,20 @@ namespace inLamNing
 
                 for (int i = 0; i < 1; i++)
                 {
-                    Console.Write("Please enter the first number ");
-                    numArray[0] = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Please enter the second number ");
-                    numArray[1] = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Please enter the third number ");
-                    numArray[2] = Convert.ToInt32(Console.ReadLine());
-                }
-
-                for (int i = 0; i < 1; i++)
-                {
                     Console.Write("Please Enter First operator");
                     opArray[0] = Char.Parse(Console.ReadLine());
 
                     Console.Write("Please Enter Second operator");
                     opArray[1] = Char.Parse(Console.ReadLine());
+                }
+                for (int i = 0; i < 1; i++)
+                {
+                    Console.Write("Please enter the first number ");
+                    numArray[0] = int.Parse(Console.ReadLine());
+                    Console.Write("Please enter the second number ");
+                    numArray[1] = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Please enter the third number ");
+                    numArray[2] = Convert.ToInt32(Console.ReadLine());
                 }
 
                 int[] numbers = numArray;
@@ -114,23 +114,22 @@ namespace inLamNing
                     Console.WriteLine("Cool, you now have a hundred, clap clap");
                 }
 
-                //Getting the stored value from the list and assigning new "sum"
-                double sum = 0;
-                foreach (var value in arrayList)
-                {
-                    sum += value; // Prints items
-                }
+                //play again or extit promt
 
                 Console.WriteLine("Press Y or enter to play again, or press N to exit !");
-                var answer = Console.ReadLine().ToUpper();
-                if (answer == "Y")
+                var press = Console.ReadKey();
+
+                if (press.Key == ConsoleKey.Y)
+
                 {
-                    playagain = true;
-                }
-                else if (answer == "N")
-                {
-                    Console.WriteLine("Thank you for playing. The sum of all is = " + sum);
-                    Console.Write("Calculator exiting in:  ");
+                    Console.WriteLine(@"
+                      _             _                     __ _           _
+                     | |     ___   | |_    ___     o O O / _` |  ___    | |
+                     | |__  / -_)  |  _|  (_-<    o      \__, | / _ \   |_|
+                     |____| \___|  _\__|  /__/_  TS__[O] |___/  \___/  _(_)_
+                    |-----_ | ///_|-----_ | ****|{======_|////_ |''''_| **|
+                    `-0-0-`-0-0 --0-0-`-  0 - 0 -.o--000`-0-0-`-0 0 -.--0 0");
+                    Console.WriteLine("Great choice! Calculator starts in:  ");
                     Console.Write("3........");
                     Thread.Sleep(1000);
                     Console.Write("2........");
@@ -138,13 +137,47 @@ namespace inLamNing
                     Console.Write("1........");
                     Thread.Sleep(1000);
                     Console.Write("PeaceOut");
-                    Console.WriteLine(@"
- | |__ _  _ ___
- | '_ \ || / -_)
- |_.__/\_, \___");
+                    playagain = true;
+                }
+                else  if (press.Key == ConsoleKey.N)
+                {
+             
+                  
                     playagain = false;
                 }
             } while (playagain == true);
+            double sum = 0;
+            foreach (var value in arrayList)
+            {
+                sum += value; // Prints value
+            }
+
+            Console.WriteLine("Thank you for playing. The sum of all i = " + sum );
+            Console.Write("Calculator exiting in:  ");
+            Console.Write("3........");
+            Thread.Sleep(1000);
+            Console.Write("2........");
+            Thread.Sleep(1000);
+            Console.Write("1........");
+            Thread.Sleep(1000);
+            Console.WriteLine(@"
+                   ╔══╗
+                   ╚╗╔╝
+                   ╔╝(¯`v´¯)
+                   ╚══`.¸.[C#] BYEEEE]
+                          [ThankYouForPlaying] 
+                         __________
+                        | ________ |
+                        ||12345678||
+                        |----------|
+                        |[M|#|C][-]|
+                        |[7|8|9][+]|
+                        |[4|5|6][x]|
+                        |[1|2|3][%]|
+                        |[.|O|:][=]|
+                        \__________/ ");
+            Console.WriteLine("Pres Y To Exit the Console");
+            Console.ReadLine();
         }
     }
 }
