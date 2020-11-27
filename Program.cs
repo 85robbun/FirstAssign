@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace inLamNing
+namespace FirstAssign
 {
     internal class Program
     {
@@ -120,6 +120,7 @@ namespace inLamNing
                 if (press.Key == ConsoleKey.Y)
 
                 {
+                    Console.Clear();
                     Console.WriteLine(@"
                       _             _                     __ _           _
                      | |     ___   | |_    ___     o O O / _` |  ___    | |
